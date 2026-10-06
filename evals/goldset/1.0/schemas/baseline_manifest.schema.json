@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "nexus://phase0/baseline-manifest.schema.json",
+  "type": "object",
+  "required": [
+    "expected_baseline_commit",
+    "head",
+    "baseline_commit_matches",
+    "working_tree_clean",
+    "tracked_tree_sha256"
+  ],
+  "properties": {
+    "expected_baseline_commit": {
+      "const": "268e29b99cbf09f1ebfab8bf5f1e74fac8a0f175"
+    },
+    "head": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "baseline_commit_matches": {
+      "type": "boolean"
+    },
+    "working_tree_clean": {
+      "type": "boolean"
+    },
+    "tracked_tree_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  }
+}

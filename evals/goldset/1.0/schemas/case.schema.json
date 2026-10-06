@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "nexus://goldset/1.0/case.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "version",
+    "suite_version",
+    "category",
+    "split",
+    "title",
+    "authoring_status",
+    "hard_gate",
+    "budgets"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Z]{3}-[0-9]{3}$"
+    },
+    "version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "suite_version": {
+      "const": "1.0.0"
+    },
+    "category": {
+      "type": "string"
+    },
+    "split": {
+      "enum": [
+        "development",
+        "hidden",
+        "held_out"
+      ]
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "authoring_status": {
+      "enum": [
+        "skeleton",
+        "authored",
+        "frozen"
+      ]
+    },
+    "hard_gate": {
+      "type": "boolean"
+    },
+    "fixture": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "allowed_tools": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "forbidden_tools": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "required_artifacts": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "deterministic_checks": {
+      "type": "array"
+    },
+    "security_invariants": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "budgets": {
+      "type": "object",
+      "required": [
+        "runtime_seconds",
+        "model_calls",
+        "tool_calls"
+      ]
+    },
+    "expected_v1": {
+      "type": "string"
+    }
+  }
+}

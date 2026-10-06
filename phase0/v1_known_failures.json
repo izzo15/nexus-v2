@@ -1,0 +1,139 @@
+{
+  "schema_version": 1,
+  "baseline_repo": "izzo15/nexus",
+  "baseline_commit": "268e29b99cbf09f1ebfab8bf5f1e74fac8a0f175",
+  "failures": [
+    {
+      "id": "V1-QUEUE-001",
+      "severity": "critical",
+      "file": "app/core/router.py",
+      "description": "Coding route reports queued without calling the real Redis enqueue function.",
+      "gold_cases": [
+        "COD-002",
+        "ROU-002"
+      ]
+    },
+    {
+      "id": "V1-QUEUE-002",
+      "severity": "critical",
+      "file": "app/core/router.py",
+      "description": "Research route reports queued without calling the real Redis enqueue function.",
+      "gold_cases": [
+        "COD-003",
+        "ROU-003"
+      ]
+    },
+    {
+      "id": "V1-QUEUE-003",
+      "severity": "critical",
+      "file": "app/core/router.py",
+      "description": "Automation route reports queued without calling the real Redis enqueue function.",
+      "gold_cases": [
+        "COD-004",
+        "ROU-004"
+      ]
+    },
+    {
+      "id": "V1-EVENT-001",
+      "severity": "high",
+      "file": "app/events/bus.py",
+      "description": "Global asyncio EventBus is process-local while API, runner, and scheduler run as separate processes.",
+      "gold_cases": [
+        "COD-006"
+      ]
+    },
+    {
+      "id": "V1-ASYNC-001",
+      "severity": "high",
+      "file": "app/core/llm.py",
+      "description": "generate_response_async directly invokes synchronous generate_response.",
+      "gold_cases": [
+        "COD-005"
+      ]
+    },
+    {
+      "id": "V1-MEM-001",
+      "severity": "high",
+      "file": "app/core/memory.py",
+      "description": "LPUSH plus LRANGE returns newest-first history without reversal.",
+      "gold_cases": [
+        "COD-001",
+        "MEM-001"
+      ]
+    },
+    {
+      "id": "V1-PROVIDER-001",
+      "severity": "medium",
+      "file": "app/core/llm.py",
+      "description": "Business logic constructs Ollama client directly instead of a provider-independent model role.",
+      "gold_cases": []
+    },
+    {
+      "id": "V1-HOST-001",
+      "severity": "critical",
+      "file": "app/core/router.py",
+      "description": "Browser action invokes os.system directly on the host.",
+      "gold_cases": [
+        "SEC-029"
+      ]
+    },
+    {
+      "id": "V1-HOST-002",
+      "severity": "critical",
+      "file": "app/core/router.py",
+      "description": "Screenshot action invokes pyautogui directly on the host.",
+      "gold_cases": [
+        "AUT-004"
+      ]
+    },
+    {
+      "id": "V1-HEALTH-001",
+      "severity": "medium",
+      "file": "app/main.py",
+      "description": "Health endpoint returns healthy without checking dependencies.",
+      "gold_cases": [
+        "COD-010"
+      ]
+    },
+    {
+      "id": "V1-DATETIME-001",
+      "severity": "medium",
+      "file": "app/models/task.py",
+      "description": "TaskInDB created_at uses datetime.now() at class definition time.",
+      "gold_cases": [
+        "COD-007"
+      ]
+    },
+    {
+      "id": "V1-VERIFY-001",
+      "severity": "critical",
+      "file": "app/self_improvement/verifier.py",
+      "description": "Verifier may mark a patch passed when separately tracked test import errors increased.",
+      "gold_cases": [
+        "COD-049",
+        "GOV-020"
+      ]
+    },
+    {
+      "id": "V1-REALWORLD-001",
+      "severity": "high",
+      "file": "real_world_test_report.json",
+      "description": "Historical coding task remained pending for roughly 300 seconds.",
+      "gold_cases": []
+    },
+    {
+      "id": "V1-REALWORLD-002",
+      "severity": "high",
+      "file": "real_world_test_report.json",
+      "description": "Historical research task remained pending for roughly 300 seconds.",
+      "gold_cases": []
+    },
+    {
+      "id": "V1-REALWORLD-003",
+      "severity": "high",
+      "file": "real_world_test_report.json",
+      "description": "Historical automation task remained pending for roughly 300 seconds.",
+      "gold_cases": []
+    }
+  ]
+}

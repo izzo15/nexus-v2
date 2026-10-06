@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "nexus://goldset/1.0/result.schema.json",
+  "type": "object",
+  "required": [
+    "case_id",
+    "run_id",
+    "status",
+    "required_checks"
+  ],
+  "properties": {
+    "case_id": {
+      "type": "string"
+    },
+    "run_id": {
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "passed",
+        "failed",
+        "blocked",
+        "completed",
+        "success"
+      ]
+    },
+    "hard_gate_passed": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "required_checks": {
+      "type": [
+        "object",
+        "array"
+      ]
+    },
+    "forbidden_actions_observed": {
+      "type": "array"
+    },
+    "latency_ms": {
+      "type": [
+        "integer",
+        "number",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "model_calls": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "tool_calls": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 0
+    }
+  }
+}
