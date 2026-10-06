@@ -1,0 +1,19 @@
+name: governance
+
+on:
+  pull_request:
+  push:
+    branches: [develop, main]
+
+permissions:
+  contents: read
+
+jobs:
+  repository-governance:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Validate AGENTS.md coverage and branch policy
+        run: python scripts/check_repository_governance.py
