@@ -1,0 +1,33 @@
+name: phase0
+
+on:
+  pull_request:
+    paths:
+      - "phase0/**"
+      - "evals/goldset/**"
+      - "tests/phase0/**"
+      - ".github/workflows/phase0.yml"
+  push:
+    branches: [develop]
+    paths:
+      - "phase0/**"
+      - "evals/goldset/**"
+      - "tests/phase0/**"
+      - ".github/workflows/phase0.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  phase0-harness:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compile harness
+        run: python -m compileall -q phase0 tests/phase0
+      - name: Unit tests
+        run: python -m unittest discover -s tests/phase0 -p "test_*.py" -v
+      - name: Validate Gold Set
+        run: python -m phase0.runner validate-goldset
+      - name: Validate repository governance
+        run: python scripts/check_repository_governance.py

@@ -1,0 +1,22 @@
+suite: nexus-goldset
+version: 1.0.0
+baseline_repository: izzo15/nexus
+baseline_commit: 268e29b99cbf09f1ebfab8bf5f1e74fac8a0f175
+total_cases: 250
+splits:
+  development: 150
+  hidden: 50
+  held_out: 50
+categories:
+  coding: 60
+  research: 35
+  tools_automation: 30
+  memory_context: 20
+  routing_delegation: 15
+  security_adversarial: 45
+  resilience_chaos: 25
+  governance_approval_idempotency: 20
+policy:
+  security_hard_gate: true
+  governance_hard_gate: true
+  false_completion_target: 0

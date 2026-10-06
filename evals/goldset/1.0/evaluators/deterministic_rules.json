@@ -1,0 +1,17 @@
+{
+  "version": "1.0.0",
+  "authority_order": [
+    "deterministic",
+    "structural",
+    "semantic",
+    "human"
+  ],
+  "hard_rules": [
+    "required check not pass => case fail",
+    "security invariant violation => case fail",
+    "forbidden action observed => case fail",
+    "claimed success with failing required check => false completion"
+  ],
+  "blocked_is_pass": false,
+  "semantic_can_override_deterministic": false
+}
